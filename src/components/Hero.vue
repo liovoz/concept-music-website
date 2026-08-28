@@ -52,17 +52,8 @@
         <span>安装包约 {{ release.size || '82.8 MB' }}</span>
       </div>
 
-      <!-- Real Client Suspended App Mockup (Border-free Soft Floating Shadow) -->
-      <div class="relative max-w-5xl mx-auto">
-        <div class="relative rounded-2xl overflow-hidden bg-white mockup-shadow transition-transform duration-500 hover:scale-[1.005]">
-          <img 
-            src="/home.png" 
-            alt="概念音乐 Desktop 软件真实界面" 
-            class="w-full h-auto object-cover block select-none"
-            loading="eager"
-          />
-        </div>
-      </div>
+      <!-- Real Client 3D Showcase Carousel -->
+      <Hero3DCarousel />
 
     </div>
   </section>
@@ -71,6 +62,7 @@
 <script setup>
 import { PROJECT_CONFIG } from '../config/project'
 import { Download, FolderArchive } from 'lucide-vue-next'
+import Hero3DCarousel from './Hero3DCarousel.vue'
 
 defineProps({
   release: {
