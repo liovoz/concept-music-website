@@ -8,7 +8,7 @@
           Product Showcase
         </div>
         <h2 class="text-3xl sm:text-5xl font-semibold text-ink-primary tracking-tight leading-[1.15]">
-          精致，见于毫厘。
+          精致，见于毫厘
         </h2>
         <p class="mt-4 text-base text-ink-secondary">
           基于 Electron 与 Vue 3 打造的 Windows 原生高颜值客户端，每一处交互皆纯净自然。

@@ -1,4 +1,4 @@
-import { PROJECT_CONFIG } from '../config/project'
+import { PROJECT_CONFIG } from '../config/project.js'
 
 /**
  * 格式化字节大小
@@ -53,17 +53,29 @@ export async function fetchLatestRelease() {
     const publishedAt = formatDate(data.published_at) || fallback.publishedAt
     const body = data.body || '常规体验优化与错误修复'
 
-    // 寻找 .exe 安装包与 .zip 便携包
     const assets = data.assets || []
-    const exeAsset = assets.find(a => a.name.endsWith('.exe'))
-    const zipAsset = assets.find(a => a.name.endsWith('.zip'))
 
-    const installerUrl = exeAsset ? exeAsset.browser_download_url : fallback.installerUrl
-    const installerName = exeAsset ? exeAsset.name : fallback.installerName
-    const size = exeAsset ? formatBytes(exeAsset.size) : fallback.size
+    // 智能精确匹配安装版（优先匹配包含 setup / installer 的 exe，或排除 portable 的 exe）
+    const installerAsset = assets.find(a => 
+      a.name.endsWith('.exe') && /setup|installer/i.test(a.name)
+    ) || assets.find(a => 
+      a.name.endsWith('.exe') && !/portable/i.test(a.name) && !a.name.endsWith('.blockmap')
+    ) || assets.find(a => a.name.endsWith('.exe') && !a.name.endsWith('.blockmap'))
 
-    const portableUrl = zipAsset ? zipAsset.browser_download_url : fallback.portableUrl
-    const portableName = zipAsset ? zipAsset.name : fallback.portableName
+    // 智能精确匹配便携版（优先匹配包含 portable 的 exe/zip/7z，或 zip/7z 压缩包）
+    const portableAsset = assets.find(a => 
+      /portable/i.test(a.name) && !a.name.endsWith('.blockmap')
+    ) || assets.find(a => 
+      (a.name.endsWith('.zip') || a.name.endsWith('.7z')) && !a.name.endsWith('.blockmap')
+    )
+
+    const installerUrl = installerAsset ? installerAsset.browser_download_url : fallback.installerUrl
+    const installerName = installerAsset ? installerAsset.name : fallback.installerName
+    const size = installerAsset ? formatBytes(installerAsset.size) : fallback.size
+
+    const portableUrl = portableAsset ? portableAsset.browser_download_url : fallback.portableUrl
+    const portableName = portableAsset ? portableAsset.name : fallback.portableName
+    const portableSize = portableAsset ? formatBytes(portableAsset.size) : (fallback.portableSize || fallback.size)
 
     return {
       version,
@@ -76,6 +88,7 @@ export async function fetchLatestRelease() {
       portableName,
       portableUrl,
       portableFastUrl: `${PROJECT_CONFIG.cdnMirrors[0].prefix}${portableUrl}`,
+      portableSize,
       allAssets: assets,
       isFallback: false
     }
@@ -97,6 +110,7 @@ function buildReleaseData(fallback, isFallback = true) {
     portableName: fallback.portableName,
     portableUrl: fallback.portableUrl,
     portableFastUrl: `${PROJECT_CONFIG.cdnMirrors[0].prefix}${fallback.portableUrl}`,
+    portableSize: fallback.portableSize || fallback.size,
     allAssets: [],
     isFallback
   }

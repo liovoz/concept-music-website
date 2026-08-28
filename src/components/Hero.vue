@@ -10,8 +10,8 @@
 
       <!-- Main Headline with Generous Spacing -->
       <h1 class="text-4xl sm:text-6xl md:text-7xl font-semibold text-ink-primary tracking-tight leading-[1.1] mb-6">
-        只留下音乐，<br class="hidden sm:inline" />
-        其余归于纯净。
+        只留下音乐<br class="hidden sm:inline" />
+        其余归于纯净
       </h1>
 
       <!-- Slogan Description -->
@@ -33,11 +33,11 @@
 
         <!-- Portable & More Options Link -->
         <a 
-          href="#download"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-medium text-ink-primary bg-surface hover:bg-subtle border border-apple-border active:scale-[0.98] transition-all shadow-apple-subtle"
+          :href="release.portableFastUrl || release.portableUrl"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-medium text-ink-primary bg-surface hover:bg-subtle border border-apple-border active:scale-[0.98] transition-all shadow-apple-subtle group"
         >
-          <FolderArchive class="w-4 h-4 text-ink-secondary" />
-          <span>免安装绿色版 (.zip)</span>
+          <FolderArchive class="w-4 h-4 text-ink-secondary group-hover:text-ink-primary transition-colors" />
+          <span>免安装绿色便携版 (.exe)</span>
         </a>
       </div>
 
@@ -49,7 +49,7 @@
         <span>•</span>
         <span>0 商业广告与弹窗</span>
         <span>•</span>
-        <span>安装包约 {{ release.size || '85 MB' }}</span>
+        <span>安装包约 {{ release.size || '82.8 MB' }}</span>
       </div>
 
       <!-- Real Client Suspended App Mockup (Border-free Soft Floating Shadow) -->

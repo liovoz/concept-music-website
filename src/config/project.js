@@ -20,9 +20,10 @@ export const PROJECT_CONFIG = {
     publishedAt: '2025-02-15',
     installerName: 'concept-music-Setup-3.4.0.exe',
     installerUrl: 'https://github.com/liovoz/concept-music/releases/download/v3.4.0/concept-music-Setup-3.4.0.exe',
-    portableName: 'concept-music-3.4.0-win-x64.zip',
-    portableUrl: 'https://github.com/liovoz/concept-music/releases/download/v3.4.0/concept-music-3.4.0-win-x64.zip',
-    size: '85 MB',
+    portableName: 'concept-music-3.4.0-Portable.exe',
+    portableUrl: 'https://github.com/liovoz/concept-music/releases/download/v3.4.0/concept-music-3.4.0-Portable.exe',
+    size: '82.8 MB',
+    portableSize: '82.5 MB',
   },
 
   // 国内网盘直链配置

@@ -8,7 +8,7 @@
           Download & Packages
         </div>
         <h2 class="text-3xl sm:text-5xl font-semibold text-ink-primary tracking-tight leading-[1.15]">
-          即刻开启高保真之旅。
+          即刻开启高保真之旅
         </h2>
         <p class="mt-4 text-base text-ink-secondary">
           最新版本 <span class="font-mono text-ink-primary font-semibold">{{ release.version || 'v3.4.0' }}</span> · 发布于 {{ release.publishedAt || '2025-02-15' }} · 永久免费
@@ -22,7 +22,7 @@
             <Laptop class="w-3.5 h-3.5" />
             <span>Windows 10 / 11 64位</span>
             <span class="text-neutral-500">•</span>
-            <span>大小约 {{ release.size || '85 MB' }}</span>
+            <span>大小约 {{ release.size || '82.8 MB' }}</span>
           </div>
           <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight">
             Windows 官方标准安装版
@@ -65,21 +65,31 @@
               </div>
               <span class="text-xs font-mono font-medium text-ink-tertiary">免安装便携版</span>
             </div>
-            <h4 class="text-lg font-semibold text-ink-primary mb-1.5">绿色解压便携包</h4>
+            <h4 class="text-lg font-semibold text-ink-primary mb-1.5">免安装绿色便携版 (.exe)</h4>
             <p class="text-xs text-ink-secondary leading-relaxed mb-6">
-              解压即用，不写入系统注册表。适合随身 U 盘携带或在无管理员权限电脑上快速运行。
+              单文件便携运行，无需安装，不写入系统注册表。适合随身 U 盘携带或在无管理员权限电脑上快速运行。
             </p>
           </div>
 
           <div class="flex items-center justify-between pt-4 border-t border-apple-border-light">
-            <span class="text-xs text-ink-tertiary font-mono">ZIP Archive</span>
-            <a 
-              :href="release.portableFastUrl || release.portableUrl"
-              class="inline-flex items-center gap-1.5 text-xs font-semibold text-apple-blue hover:text-apple-blue-hover transition-colors"
-            >
-              <span>立即下载</span>
-              <ArrowRight class="w-3.5 h-3.5" />
-            </a>
+            <span class="text-xs text-ink-tertiary font-mono">Portable • 约 {{ release.portableSize || '82.5 MB' }}</span>
+            <div class="flex items-center gap-3">
+              <a 
+                :href="release.portableFastUrl || release.portableUrl"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-apple-blue hover:text-apple-blue-hover transition-colors"
+              >
+                <span>极速下载</span>
+                <ArrowRight class="w-3.5 h-3.5" />
+              </a>
+              <a 
+                :href="release.portableUrl"
+                target="_blank"
+                class="text-[11px] text-ink-tertiary hover:text-ink-primary transition-colors"
+                title="GitHub Release 官方源"
+              >
+                官方源
+              </a>
+            </div>
           </div>
         </div>
 

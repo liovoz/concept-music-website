@@ -8,7 +8,7 @@
           Questions & Answers
         </div>
         <h2 class="text-3xl sm:text-5xl font-semibold text-ink-primary tracking-tight leading-[1.15]">
-          常见答疑。
+          常见答疑
         </h2>
         <p class="mt-4 text-base text-ink-secondary">
           关于音质机制、软件安全性与更新维护的透明解答。

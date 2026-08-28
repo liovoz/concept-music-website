@@ -39,6 +39,7 @@ const releaseInfo = ref({
   portableName: PROJECT_CONFIG.fallbackRelease.portableName,
   portableUrl: PROJECT_CONFIG.fallbackRelease.portableUrl,
   portableFastUrl: `${PROJECT_CONFIG.cdnMirrors[0].prefix}${PROJECT_CONFIG.fallbackRelease.portableUrl}`,
+  portableSize: PROJECT_CONFIG.fallbackRelease.portableSize || '82.5 MB',
 })
 
 onMounted(async () => {
