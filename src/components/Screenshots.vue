@@ -48,7 +48,7 @@
           <!-- Screenshot View (Border-free) -->
           <div class="lg:col-span-8 rounded-2xl overflow-hidden shadow-apple-card relative group">
             <img 
-              src="/home.png" 
+              src="/Home.png" 
               alt="概念音乐主界面" 
               class="w-full h-auto object-cover block select-none transition-transform duration-500 group-hover:scale-[1.01]"
             />
