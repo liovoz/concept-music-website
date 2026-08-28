@@ -4,50 +4,57 @@ export default {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
-          950: '#0f172a',
+        page: '#fbfbfd',
+        surface: '#ffffff',
+        subtle: '#f5f5f7',
+        ink: {
+          primary: '#1d1d1f',
+          secondary: '#515154',
+          tertiary: '#86868b',
+          muted: '#a1a1a6',
         },
-        dark: {
-          bg: '#090d16',
-          card: '#0f172a',
-          surface: '#172033',
-          border: 'rgba(255, 255, 255, 0.08)',
+        apple: {
+          blue: '#0071e3',
+          'blue-hover': '#0077ed',
+          gray: '#86868b',
+          border: 'rgba(0, 0, 0, 0.08)',
+          'border-light': 'rgba(0, 0, 0, 0.05)',
         }
       },
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        sans: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"SF Pro Display"',
+          '"SF Pro Text"',
+          '"Inter"',
+          '"PingFang SC"',
+          '"Hiragino Sans GB"',
+          '"Microsoft YaHei"',
+          'sans-serif'
+        ],
+        mono: [
+          '"SF Mono"',
+          '"JetBrains Mono"',
+          'Menlo',
+          'Monaco',
+          'Consolas',
+          'monospace'
+        ],
       },
-      animation: {
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'wave': 'wave 2s ease-in-out infinite',
+      letterSpacing: {
+        tightest: '-0.035em',
+        tighter: '-0.025em',
+        tight: '-0.015em',
       },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        wave: {
-          '0%, 100%': { height: '12px' },
-          '50%': { height: '32px' },
-        }
-      },
-      backgroundImage: {
-        'radial-gradient': 'radial-gradient(var(--tw-gradient-stops))',
+      boxShadow: {
+        'apple-subtle': '0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.02)',
+        'apple-card': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02)',
+        'apple-floating': '0 25px 60px -15px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04)',
+        'apple-button': '0 2px 8px -1px rgba(0, 113, 227, 0.3)',
       }
     },
   },

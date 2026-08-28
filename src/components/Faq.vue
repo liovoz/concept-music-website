@@ -1,63 +1,62 @@
 <template>
-  <section id="faq" class="py-24 bg-[#090e18]/80 border-t border-slate-800/60">
+  <section id="faq" class="py-28 md:py-36 relative border-t border-apple-border-light bg-subtle/50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Title -->
-      <div class="text-center mb-16">
-        <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-3 font-mono">
-          FREQUENTLY ASKED QUESTIONS
+      
+      <!-- Header -->
+      <div class="text-center max-w-xl mx-auto mb-16 md:mb-20">
+        <div class="text-xs font-mono font-medium uppercase tracking-widest text-ink-tertiary mb-3">
+          Questions & Answers
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-semibold text-ink-primary tracking-tight leading-[1.15]">
+          常见答疑。
         </h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          常见问题 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-300">与解答</span>
-        </p>
-        <p class="mt-4 text-sm text-slate-400">
-          关于软件使用、安全性与版本更新的详细答疑。
+        <p class="mt-4 text-base text-ink-secondary">
+          关于音质机制、软件安全性与更新维护的透明解答。
         </p>
       </div>
 
-      <!-- FAQ Accordion List -->
-      <div class="space-y-4">
+      <!-- Clean Minimalist Hairline Accordion -->
+      <div class="divide-y divide-apple-border-light">
         <div 
           v-for="(item, index) in PROJECT_CONFIG.faqs" 
           :key="index"
-          class="glass-card rounded-xl border border-slate-700/80 overflow-hidden transition-all"
+          class="py-6"
         >
           <button 
             @click="toggle(index)"
-            class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-slate-800/40 transition-colors"
+            class="w-full text-left flex items-center justify-between gap-4 group"
           >
-            <span class="text-sm sm:text-base font-bold text-white flex items-center gap-3">
-              <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-xs flex items-center justify-center font-mono">
-                Q
-              </span>
+            <span class="text-base sm:text-lg font-medium text-ink-primary group-hover:text-apple-blue transition-colors">
               {{ item.q }}
             </span>
             <ChevronDown 
-              class="w-4 h-4 text-slate-400 transition-transform duration-200 flex-shrink-0"
-              :class="openIndex === index ? 'rotate-180 text-blue-400' : ''"
+              class="w-4 h-4 text-ink-tertiary transition-transform duration-300 flex-shrink-0"
+              :class="openIndex === index ? 'rotate-180 text-ink-primary' : ''"
             />
           </button>
 
           <div 
             v-show="openIndex === index"
-            class="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/60 animate-in fade-in duration-200"
+            class="pt-4 text-sm text-ink-secondary leading-relaxed pr-8 animate-in fade-in duration-200"
           >
             {{ item.a }}
           </div>
         </div>
       </div>
 
-      <!-- Feedback CTA -->
-      <div class="mt-12 text-center text-xs text-slate-400">
-        还有其他疑问或遇到 Bug？欢迎到 
+      <!-- Bottom issue link -->
+      <div class="mt-16 text-center text-xs text-ink-tertiary">
+        仍有疑问或需要反馈新功能？欢迎前往 
         <a 
           :href="PROJECT_CONFIG.github.issuesUrl" 
           target="_blank" 
-          class="text-blue-400 hover:underline font-semibold"
+          class="text-ink-primary underline underline-offset-4 hover:text-apple-blue transition-colors font-medium"
         >
-          GitHub Issues 提交反馈
+          GitHub Issues
         </a>
-        ，我们会第一时间跟进解决。
+        提交反馈。
       </div>
+
     </div>
   </section>
 </template>
@@ -67,7 +66,7 @@ import { ref } from 'vue'
 import { PROJECT_CONFIG } from '../config/project'
 import { ChevronDown } from 'lucide-vue-next'
 
-const openIndex = ref(0) // 默认展开第1项
+const openIndex = ref(0)
 
 const toggle = (idx) => {
   openIndex.value = openIndex.value === idx ? -1 : idx

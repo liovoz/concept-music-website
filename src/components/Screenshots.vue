@@ -1,156 +1,181 @@
 <template>
-  <section id="screenshots" class="py-24 bg-[#090e18]/80 relative border-y border-slate-800/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Header -->
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <h2 class="text-xs font-bold uppercase tracking-widest text-cyan-400 mb-3 font-mono">
-          INTERFACE SHOWCASE
+  <section id="showcase" class="py-28 md:py-36 relative border-t border-apple-border-light bg-subtle/50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-14 md:mb-18">
+        <div class="text-xs font-mono font-medium uppercase tracking-widest text-ink-tertiary mb-3">
+          Product Showcase
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-semibold text-ink-primary tracking-tight leading-[1.15]">
+          精致，见于毫厘。
         </h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          优雅现代的 <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">交互界面</span>
-        </p>
-        <p class="mt-4 text-sm sm:text-base text-slate-400">
-          深色极简美学，流畅的动画过渡与精心打磨的操作手感。
+        <p class="mt-4 text-base text-ink-secondary">
+          基于 Electron 与 Vue 3 打造的 Windows 原生高颜值客户端，每一处交互皆纯净自然。
         </p>
       </div>
 
-      <!-- Tab Navigation -->
-      <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-10">
+      <!-- Minimalist Pill Selector -->
+      <div class="flex items-center justify-center gap-2 flex-wrap mb-12 p-1.5 max-w-fit mx-auto rounded-full bg-neutral-200/60 border border-apple-border-light shadow-apple-subtle">
         <button 
-          v-for="(item, idx) in PROJECT_CONFIG.screenshots" 
+          v-for="(item, idx) in showcaseTabs" 
           :key="item.id"
           @click="activeTab = idx"
-          class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2 border"
+          class="px-5 py-2 rounded-full text-xs font-medium transition-all duration-200 flex items-center gap-2"
           :class="activeTab === idx 
-            ? 'bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-600/30 scale-105' 
-            : 'bg-slate-900/80 text-slate-400 border-slate-800 hover:text-slate-200 hover:border-slate-700'"
+            ? 'bg-white text-ink-primary shadow-apple-subtle font-semibold' 
+            : 'text-ink-secondary hover:text-ink-primary'"
         >
+          <component :is="item.icon" class="w-3.5 h-3.5" />
           <span>{{ item.name }}</span>
         </button>
       </div>
 
-      <!-- Active Tab Card Display -->
-      <div class="glass-card rounded-2xl p-6 sm:p-8 border border-slate-700/80 shadow-2xl relative overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <!-- Text info column -->
-          <div class="lg:col-span-4 space-y-4 text-left">
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-              0{{ activeTab + 1 }} / 0{{ PROJECT_CONFIG.screenshots.length }}
-            </span>
-            <h3 class="text-2xl font-bold text-white leading-snug">
-              {{ currentItem.title }}
-            </h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              {{ currentItem.desc }}
-            </p>
+      <!-- Clean Showcase Stage with Real Screenshot & Spotlight Details -->
+      <div class="max-w-5xl mx-auto rounded-3xl p-6 sm:p-8 bg-white apple-card shadow-apple-floating">
+        
+        <!-- Showcase Header Meta -->
+        <div class="px-2 pb-5 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-apple-border-light text-xs font-mono">
+          <div class="flex items-center gap-2 text-ink-tertiary">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            <span class="text-ink-primary font-medium">CONCEPT_MUSIC // {{ currentTab.viewName }}</span>
+          </div>
+          <span class="text-apple-blue font-semibold">{{ currentTab.highlightText }}</span>
+        </div>
 
-            <div class="pt-4 border-t border-slate-800 space-y-2.5 text-xs text-slate-400">
-              <div class="flex items-center gap-2">
-                <CheckCircle2 class="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>基于 Vue 3 + Tailwind 响应式渲染</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <CheckCircle2 class="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>全键盘快捷键与系统级托盘联动</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <CheckCircle2 class="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>原生级极致流畅动画响应</span>
-              </div>
-            </div>
+        <!-- Dynamic Content Grid: Image Showcase + Feature Focus Callout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- Screenshot View (Border-free) -->
+          <div class="lg:col-span-8 rounded-2xl overflow-hidden shadow-apple-card relative group">
+            <img 
+              src="/home.png" 
+              alt="概念音乐主界面" 
+              class="w-full h-auto object-cover block select-none transition-transform duration-500 group-hover:scale-[1.01]"
+            />
           </div>
 
-          <!-- Interactive Mockup Render Column -->
-          <div class="lg:col-span-8 bg-[#0b101d] rounded-xl border border-slate-800 p-4 sm:p-6 shadow-inner min-h-[340px] flex flex-col justify-center">
-            <!-- 发现页 Mockup -->
-            <div v-if="currentItem.id === 'discover'" class="space-y-4">
-              <div class="flex items-center justify-between">
-                <h4 class="text-sm font-bold text-white flex items-center gap-2">
-                  <Sparkles class="w-4 h-4 text-blue-400" />
-                  每日推荐歌单
-                </h4>
-                <span class="text-xs text-blue-400 hover:underline cursor-pointer">查看更多 &rarr;</span>
+          <!-- Feature Focus Panel on the Right -->
+          <div class="lg:col-span-4 space-y-6">
+            <div class="p-6 rounded-2xl bg-subtle border border-apple-border-light space-y-3">
+              <div class="w-9 h-9 rounded-xl bg-white shadow-apple-subtle flex items-center justify-center text-ink-primary">
+                <component :is="currentTab.icon" class="w-4 h-4" />
               </div>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div v-for="i in 4" :key="i" class="bg-slate-900/80 rounded-lg p-2.5 border border-slate-800 group hover:border-blue-500/50 transition-all">
-                  <div class="w-full aspect-square rounded-md bg-gradient-to-br from-blue-900 via-indigo-950 to-slate-900 mb-2 flex items-center justify-center relative overflow-hidden">
-                    <Music class="w-8 h-8 text-blue-400/40" />
-                    <span class="absolute top-1 right-1 px-1.5 py-0.5 rounded bg-black/60 text-[9px] text-white">120万播放</span>
-                  </div>
-                  <div class="text-xs font-semibold text-slate-200 truncate">流行华语金曲榜精选 #{{ i }}</div>
-                  <div class="text-[10px] text-slate-400">每日 06:00 更新</div>
-                </div>
+              <h3 class="text-lg font-semibold text-ink-primary">
+                {{ currentTab.title }}
+              </h3>
+              <p class="text-xs text-ink-secondary leading-relaxed">
+                {{ currentTab.desc }}
+              </p>
+            </div>
+
+            <!-- Highlights Checklist -->
+            <div class="space-y-2.5">
+              <div v-for="bullet in currentTab.bullets" :key="bullet" class="flex items-center gap-2.5 text-xs text-ink-secondary">
+                <Check class="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>{{ bullet }}</span>
               </div>
             </div>
 
-            <!-- 播放器 Mockup -->
-            <div v-else-if="currentItem.id === 'player'" class="space-y-4 text-center py-4">
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold border border-blue-500/30">
-                Hi-Res Master Audio Quality
-              </div>
-              <h4 class="text-lg font-bold text-white">正在播放：稻香 - 周杰伦</h4>
-              <p class="text-xs text-cyan-300 font-mono">FLAC · 96kHz / 24bit · 2840kbps</p>
-              <div class="max-w-md mx-auto py-3 space-y-1.5">
-                <p class="text-xs text-slate-500">对这个世界如果你有太多的抱怨</p>
-                <p class="text-sm font-bold text-blue-400">跌倒了 就不敢继续往前走</p>
-                <p class="text-xs text-slate-400">为什么 人要这么的脆弱 堕落</p>
-              </div>
-            </div>
-
-            <!-- 桌面歌词 Mockup -->
-            <div v-else-if="currentItem.id === 'lyrics'" class="p-6 bg-slate-950/70 border border-cyan-500/30 rounded-xl relative text-center backdrop-blur-md shadow-2xl">
-              <div class="absolute top-2 right-2 flex items-center gap-1 text-slate-400">
-                <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-cyan-300">置顶锁定中</span>
-              </div>
-              <div class="space-y-2 py-4">
-                <p class="text-sm text-slate-300 font-bold">夜空中最亮的星 能否听清</p>
-                <p class="text-lg font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">
-                  那仰望的人 心底的孤独和叹息
-                </p>
-                <p class="text-xs text-slate-400 font-mono">The brightest star in the night sky</p>
-              </div>
-            </div>
-
-            <!-- 网易云导入 Mockup -->
-            <div v-else-if="currentItem.id === 'import'" class="space-y-4">
-              <div class="text-xs font-semibold text-slate-300">输入网易云歌单分享链接或歌单 ID：</div>
-              <div class="flex gap-2">
-                <input 
-                  type="text" 
-                  value="https://music.163.com/playlist?id=3778678" 
-                  readonly
-                  class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-300 font-mono"
-                />
-                <button class="px-4 py-2 rounded-lg bg-rose-600 text-white text-xs font-bold shadow-md">
-                  一键导入
-                </button>
-              </div>
-              <div class="p-3 rounded-lg bg-slate-900/80 border border-slate-800 text-xs text-slate-300 flex items-center justify-between">
-                <span>已成功解析：热歌榜 (共 100 首歌曲)</span>
-                <span class="text-emerald-400 font-bold">导入成功</span>
-              </div>
-            </div>
-
-            <!-- 私人 FM Mockup -->
-            <div v-else class="space-y-4 text-center py-4">
-              <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-600 mx-auto flex items-center justify-center shadow-lg shadow-purple-500/30">
-                <Radio class="w-8 h-8 text-white" />
-              </div>
-              <h4 class="text-base font-bold text-white">私人漫游 FM 正在生成专属流</h4>
-              <p class="text-xs text-slate-400 max-w-sm mx-auto">根据你的听歌足迹，智能匹配相似曲风与高潮副歌片段</p>
+            <!-- Quick Download CTA Link -->
+            <div class="pt-2">
+              <a 
+                href="#download" 
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-apple-blue hover:text-apple-blue-hover transition-colors"
+              >
+                <span>立即体验该功能</span>
+                <ArrowRight class="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
         </div>
+
       </div>
+
     </div>
   </section>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
-import { PROJECT_CONFIG } from '../config/project'
-import { Sparkles, CheckCircle2, Music, Radio } from 'lucide-vue-next'
+import { 
+  Compass, Disc, Mic2, Import, Radio, 
+  Check, ArrowRight 
+} from 'lucide-vue-next'
 
 const activeTab = ref(0)
-const currentItem = computed(() => PROJECT_CONFIG.screenshots[activeTab.value])
+
+const showcaseTabs = [
+  { 
+    id: 'discover', 
+    name: '精选推荐首页', 
+    icon: Compass, 
+    viewName: 'HOME_RECOMMENDATION',
+    highlightText: 'SMART_RADAR // 06:00 DAILY UPDATE',
+    title: '每日精选与歌单广场',
+    desc: '聚合全网流行榜、飙升榜与分类歌单广场，根据你的听歌历史智能推荐心动旋律。',
+    bullets: [
+      '每日 06:00 自动雷达更新',
+      '百万热歌榜与精选歌单聚合',
+      '无缝一键载入播放队列'
+    ]
+  },
+  { 
+    id: 'turntable', 
+    name: 'Hi-Res 母带音效', 
+    icon: Disc, 
+    viewName: 'LOSSLESS_MASTER_AUDIO',
+    highlightText: '96kHz / 24-BIT // ZERO LOSS',
+    title: '超清无损与自适应回退',
+    desc: '支持标准 128k 至 SQ FLAC 与 Hi-Res 96kHz/24bit 母带级音源，彻底告别压缩损耗。',
+    bullets: [
+      '智能探测音源最高可用音质',
+      '无卡顿平滑自适应回退机制',
+      '独家本地代理声学增益增强'
+    ]
+  },
+  { 
+    id: 'lyrics', 
+    name: '独立悬浮歌词', 
+    icon: Mic2, 
+    viewName: 'DESKTOP_FLOATING_LYRIC',
+    highlightText: 'FLUENT_MICA // AUTO_SYNC',
+    title: '双语逐字律动桌面歌词',
+    desc: '基于 Windows 独立透明磨砂窗口渲染，支持逐字律动同步、鼠标穿透与窗口锁定。',
+    bullets: [
+      '单行 / 双行律动自由切换',
+      '双语对照与外语逐词翻译',
+      '快捷键一键锁定与鼠标穿透'
+    ]
+  },
+  { 
+    id: 'import', 
+    name: '歌单秒级导入', 
+    icon: Import, 
+    viewName: 'NETEASE_CLOUD_SYNC',
+    highlightText: '1-CLICK // 100% CONVERSION',
+    title: '网易云曲库一键无缝迁移',
+    desc: '仅需复制外部歌单链接或 ID 即可完成秒级解析匹配，一键将珍藏歌单转移到本地。',
+    bullets: [
+      '支持公开分享链接秒级解析',
+      '智能模糊匹配高保真音频源',
+      '导入歌单永久本地留存'
+    ]
+  },
+  { 
+    id: 'fm', 
+    name: '私人漫游探索', 
+    icon: Radio, 
+    viewName: 'PERSONAL_CHORUS_FM',
+    highlightText: 'CHORUS_RADAR // AI EXPLORER',
+    title: '私人 FM 与副歌高潮试听',
+    desc: '懂你所爱的智能漫游流，独家支持一键定位歌曲最高潮副歌片段进行快速探索。',
+    bullets: [
+      '智能识别副歌高潮黄金节点',
+      '心动单曲一键红心收藏',
+      '海量未知好歌高效漫游'
+    ]
+  }
+]
+
+const currentTab = computed(() => showcaseTabs[activeTab.value])
 </script>
