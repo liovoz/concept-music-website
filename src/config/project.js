@@ -61,5 +61,28 @@ export const PROJECT_CONFIG = {
       q: '支持哪些操作系统与硬件架构？',
       a: '目前官方打包支持 Windows 10 与 Windows 11 (x64 架构)。代码架构跨平台兼容，未来也将逐步推出 macOS 与 Linux 客户端。'
     }
-  ]
+  ],
+
+  // 域名治理与过渡策略配置
+  domainConfig: {
+    // 官方专属主域名（B 域名）
+    primaryDomain: 'concept.cc.cd',
+    primaryUrl: 'https://concept.cc.cd',
+    
+    // 拟淘汰/需展示过渡说明的旧域名列表（A 域名）
+    legacyDomains: ['liovoz.xyz', 'www.liovoz.xyz'],
+    
+    // 自动重定向倒计时（秒）
+    autoRedirectSeconds: 6,
+    
+    // 过渡页说明文案
+    announcement: {
+      badge: '官网域名升级与迁移公告',
+      badgeEn: 'DOMAIN MIGRATION NOTICE',
+      title: '概念音乐（Concept Music）官方网站已启用全新专属域名',
+      desc: '为打造更契合「概念音乐（Concept Music）」软件品牌的专属体验，官方门户已全面迁移至全新独立专属域名 concept.cc.cd。原域名 liovoz.xyz（作者个人旧域名）将在过渡期后适时停止解析，建议您及时更新浏览器收藏夹与快捷方式。',
+      legacyLabel: '原域名（即将停用）',
+      primaryLabel: '官方专属域名（长期正统）'
+    }
+  }
 }
