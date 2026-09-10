@@ -5,7 +5,7 @@
       <!-- Top Subtle Micro-Badge (Clean version badge) -->
       <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-surface border border-apple-border shadow-apple-subtle text-ink-primary text-xs font-medium mb-8">
         <span class="w-1.5 h-1.5 rounded-full bg-apple-blue"></span>
-        <span>全新发布 {{ release.version || 'v3.4.0' }}</span>
+        <span>全新发布 {{ release.version || 'vx.x.x' }}</span>
       </div>
 
       <!-- Main Headline with Generous Spacing -->
@@ -28,7 +28,7 @@
         >
           <Download class="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
           <span>免费下载 Windows 安装版</span>
-          <span class="text-xs text-blue-100 font-mono">({{ release.version || 'v3.4.0' }})</span>
+          <span class="text-xs text-blue-100 font-mono">({{ release.version || 'vx.x.x' }})</span>
         </a>
 
         <!-- Portable & More Options Link -->
@@ -49,7 +49,7 @@
         <span>•</span>
         <span>0 商业广告与弹窗</span>
         <span>•</span>
-        <span>安装包约 {{ release.size || '82.8 MB' }}</span>
+        <span>安装包约 {{ release.size || 'xx.xx MB' }}</span>
       </div>
 
       <!-- Real Client 3D Showcase Carousel -->

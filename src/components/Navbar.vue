@@ -18,7 +18,7 @@
             概念音乐
           </span>
           <span class="text-[10px] px-1.5 py-0.5 rounded-full font-mono font-medium bg-subtle text-ink-tertiary border border-apple-border-light">
-            {{ release.version || 'v3.4.0' }}
+            {{ release.version || 'vx.x.x' }}
           </span>
         </div>
       </a>
@@ -88,7 +88,7 @@
           @click="mobileOpen = false"
           class="px-4 py-1.5 rounded-full text-xs font-medium text-white bg-ink-primary"
         >
-          立即下载 ({{ release.version || 'v3.4.0' }})
+          立即下载 ({{ release.version || 'vx.x.x' }})
         </a>
       </div>
     </div>

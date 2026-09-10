@@ -11,7 +11,7 @@
           即刻开启高保真之旅
         </h2>
         <p class="mt-4 text-base text-ink-secondary">
-          最新版本 <span class="font-mono text-ink-primary font-semibold">{{ release.version || 'v3.4.0' }}</span> · 发布于 {{ release.publishedAt || '2025-02-15' }} · 永久免费
+          最新版本 <span class="font-mono text-ink-primary font-semibold">{{ release.version || 'vx.x.x' }}</span> · 发布于 {{ release.publishedAt || '20xx-xx-xx' }} · 永久免费
         </p>
       </div>
 
@@ -22,7 +22,7 @@
             <Laptop class="w-3.5 h-3.5" />
             <span>Windows 10 / 11 64位</span>
             <span class="text-neutral-500">•</span>
-            <span>大小约 {{ release.size || '82.8 MB' }}</span>
+            <span>大小约 {{ release.size || 'xx.xx MB' }}</span>
           </div>
           <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight">
             Windows 官方标准安装版
@@ -72,7 +72,7 @@
           </div>
 
           <div class="flex items-center justify-between pt-4 border-t border-apple-border-light">
-            <span class="text-xs text-ink-tertiary font-mono">Portable • 约 {{ release.portableSize || '82.5 MB' }}</span>
+            <span class="text-xs text-ink-tertiary font-mono">Portable • 约 {{ release.portableSize || 'xx.xx MB' }}</span>
             <div class="flex items-center gap-3">
               <a 
                 :href="release.portableFastUrl || release.portableUrl"
