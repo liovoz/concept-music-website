@@ -27,20 +27,24 @@
 
 ## ✨ 核心特性
 
-- 🎨 **Apple 现代声学极简美学**：
-  - 纯净明亮的冷调工作室背景（`#FBFBFD`），告别视觉噪点与多余装饰。
-  - 极细微 1px 优雅边框与多层弥散漫反射浮空阴影。
-  - 真实桌面客户端界面展台，还原 1:1 原生轻盈质感。
+- 🎨 **Apple 现代声学极简美学与系统性 Unslop 工艺**：
+  - 纯净明亮的冷调工作室背景（`#FBFBFD`），收敛过度留白与非 4px 栅格杂散间距。
+  - 真实桌面客户端 3D 展台，支持 6 大核心视图流转、键盘与触摸手势、移动端防遮挡控制栏与纯 GPU 合成动画。
+  - 极细微 1px 中性发丝边框与统一层级阴影（`surface-xs` / `surface-sm` / `surface-md` / `surface-lg`），彻底移除有色辉光。
+  - 桌面端编辑式分栏与左右基线对齐排版，彻底消除跨设备单字孤行与标点悬挂。
+  - 全站单一动效曲线（`cubic-bezier(0.22, 1, 0.36, 1)`），支持轻量滚动显隐与 `prefers-reduced-motion` 完整降级。
 - 🔄 **GitHub Releases 实时自动联动**：
   - 客户端发版后，官网通过 GitHub API 自动拉取最新版本号、发布日期、文件大小与下载直链。
   - **无需手动修改官网代码即可完成版本全自动同步更新**。
 - 🚀 **高速分发下载矩阵**：
-  - **Windows 官方标准安装版 (`.exe`)**：支持国内极速 CDN 满速镜像下载与 GitHub 官方源直连。
+  - **Windows 官方标准安装版 (`.exe`)**：高对比炭黑主卡承接，支持国内极速 CDN 满速镜像下载与 GitHub 官方源直连。
   - **绿色免安装便携版 (`.exe`)**：单文件免安装、无痕随身。
   - **国内网盘备用通道**：集成夸克网盘高速下载，保障多环境全天候可用。
 - 💡 **轻量零运维架构**：
   - 纯静态单页架构，免后端服务器运维，首屏加载毫秒级响应。
   - 原生适配 Cloudflare Pages 与 Vercel 全球边缘节点 CDN 托管。
+- 🌐 **域名治理与平滑过渡**：
+  - 全面支持官方专属主域名（`concept.cc.cd`）分发与旧域名（`liovoz.xyz`）平滑迁移提示。
 - 🛡️ **安全友好引导**：
   - 内置针对 Windows SmartScreen 提示的清晰开源安全指引。
 
@@ -51,31 +55,39 @@
 ```text
 concept-music-website/
 ├── public/
-│   ├── favicon.ico         # 网站 Favicon (官方圆形蓝色耳机)
-│   ├── favicon.svg         # SVG Favicon
-│   ├── logo.svg            # 官方品牌 Logo
-│   └── home.png            # 真实桌面客户端主界面展示截图
+│   ├── favicon.ico                 # 网站 Favicon (官方圆形蓝色耳机)
+│   ├── favicon.svg                 # SVG Favicon
+│   ├── logo.svg                    # 官方品牌 Logo
+│   ├── Home.png                    # 客户端主界面展示截图
+│   ├── New.png                     # 新歌速递界面截图
+│   ├── FM.png                      # 私人漫游界面截图
+│   ├── Artists.png                 # 歌手界面截图
+│   ├── Explore.png                 # 歌单广场界面截图
+│   └── Netease.png                 # 网易歌单界面截图
 ├── src/
 │   ├── assets/
-│   │   └── main.css        # 全局样式与 Apple 级材质/阴影规范
+│   │   └── main.css                # 全局样式、Token 变量、动效曲线与组件类
 │   ├── components/
-│   │   ├── Navbar.vue      # 极简磨砂毛玻璃导航栏
-│   │   ├── Hero.vue        # 呼吸感首屏与真实客户端悬浮展台
-│   │   ├── DownloadCenter.vue # 聚焦分层的下载中心（安装版/便携版/夸克网盘）
-│   │   ├── Faq.vue         # 极简细线常见答疑手风琴
-│   │   └── Footer.vue      # 纯净工业风页脚
+│   │   ├── Navbar.vue              # 极简磨砂毛玻璃导航栏（含板块激活指示与移动端抽屉）
+│   │   ├── Hero.vue                # 首屏聚光视觉区与双操作入口
+│   │   ├── Hero3DCarousel.vue      # 客户端 3D 轮播展示台（手势/键盘/防遮挡）
+│   │   ├── DownloadCenter.vue      # 左右基线对齐抬头与分层下载中心
+│   │   ├── Faq.vue                 # 桌面端 12 栅格左粘性引导 + 右平滑手风琴
+│   │   ├── Footer.vue              # 纯净工业风页脚
+│   │   └── DomainMigrationNotice.vue # 旧域名迁移过渡门禁与平滑引导页
 │   ├── composables/
-│   │   └── useTheme.js     # 纯浅色模式状态管理
+│   │   ├── useScrollReveal.js      # 轻量一次性视口滚动显隐 Hook
+│   │   └── useTheme.js             # 纯浅色模式状态管理
 │   ├── config/
-│   │   └── project.js      # 仓库地址、网盘链接与静态兜底配置
+│   │   └── project.js              # 仓库地址、域名配置、网盘链接与静态兜底
 │   ├── services/
-│   │   └── github.js       # GitHub Release 实时获取与 CDN 加速解析
-│   ├── App.vue             # 主组件
-│   └── main.js             # 入口文件
-├── index.html              # HTML 模板与元信息
-├── tailwind.config.js      # Tailwind 配色、字系与阴影配置
-├── vite.config.js          # Vite 构建配置
-└── wrangler.toml           # Cloudflare Pages 配置文件
+│   │   └── github.js               # GitHub Release 实时获取与 CDN 加速解析
+│   ├── App.vue                     # 根组件与域名过渡路由判定
+│   └── main.js                     # 入口文件
+├── index.html                      # HTML 模板与 SEO 元信息
+├── tailwind.config.js              # Tailwind 配色、中性阴影、字系与动效曲线配置
+├── vite.config.js                  # Vite 构建配置
+└── wrangler.toml                   # Cloudflare Pages 配置文件
 ```
 
 ---
